@@ -1,10 +1,16 @@
-export const isValidLuhn = (creditCardNumber: string) => {
+export const isValidLuhn = (creditCardNumber: string | number) => {
+  const cleanedString = `${creditCardNumber}`.replace(/\D/g, "");
+
+  if (!cleanedString.length) {
+    return false;
+  }
+
   let sum = 0;
   let shouldDouble = false; // start with the rightmost digit and double every second digit
 
   // Loop over the number from right to left
-  for (let i = creditCardNumber.length - 1; i >= 0; i--) {
-    let digit = parseInt(creditCardNumber.charAt(i), 10);
+  for (let i = cleanedString.length - 1; i >= 0; i--) {
+    let digit = parseInt(cleanedString.charAt(i), 10);
 
     if (shouldDouble) {
       digit *= 2;
