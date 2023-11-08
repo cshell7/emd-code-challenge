@@ -5,20 +5,20 @@ import { isValidLuhn } from "~/utils/is-valid-luhn";
 
 export const creditCardRouter = createTRPCRouter({
   checkCreditCardNumber: publicProcedure
-    .input(z.object({ ccNumber: z.string() }))
+    .input(z.object({ creditCardNumber: z.string() }))
     .mutation(({ input }) => {
-      const isValid = isValidLuhn(input.ccNumber);
+      const isValid = isValidLuhn(input.creditCardNumber);
       return {
         isValid,
       };
     }),
   checkManyCreditCardNumbers: publicProcedure
-    .input(z.object({ ccNumbers: z.string().array() }))
+    .input(z.object({ creditCardNumbers: z.string().array() }))
     .mutation(({ input }) => {
-      const results = input.ccNumbers.map((ccNumber) => {
-        const isValid = isValidLuhn(ccNumber);
+      const results = input.creditCardNumbers.map((creditCardNumber) => {
+        const isValid = isValidLuhn(creditCardNumber);
         return {
-          lastFour: ccNumber.slice(-4),
+          lastFour: creditCardNumber.slice(-4),
           isValid,
         };
       });
