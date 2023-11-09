@@ -58,10 +58,6 @@ export default function Home() {
       {
         onSuccess: () => {
           setIsDirty(false);
-          reset(undefined, { keepValues: true, keepTouched: false });
-        },
-        onError: () => {
-          reset(undefined, { keepValues: true });
         },
       }
     );
@@ -76,7 +72,7 @@ export default function Home() {
         <AppBar position="fixed">
           <Toolbar>
             <Typography variant="h6" color="inherit" component="div">
-              Credit Card Number Checker
+              Credit Card Number Validator
             </Typography>
           </Toolbar>
         </AppBar>
@@ -85,7 +81,7 @@ export default function Home() {
           <Card>
             <FormProvider {...useFormMethods}>
               <form onSubmit={handleSubmit(onSubmit)}>
-                <CardHeader title="Super Official Credit Card Validator" />
+                <CardHeader title="Super Official Credit Card Number Validator" />
                 <CardContent
                   sx={{
                     display: "flex",

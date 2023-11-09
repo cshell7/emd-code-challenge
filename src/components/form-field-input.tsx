@@ -14,32 +14,30 @@ export function FormFieldInput<FormFields extends FieldValues>({
   name,
   label,
   placeholder = "",
-  control,
-  defaultValue,
-  className,
-  rules,
-  disabled,
-  type = "text",
   helperText,
+  disabled,
+  defaultValue,
+  type = "text",
   onChange,
+  control,
+  rules,
   sx,
 }: {
   name: FieldPath<FormFields>;
   label?: string;
   placeholder?: string;
-  control: Control<FormFields>;
+  helperText?: React.ReactNode;
+  disabled?: boolean;
   defaultValue: FieldPathValue<FormFields, FieldPath<FormFields>>;
-  className?: string;
+  type?: string;
+  onChange?: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  control: Control<FormFields>;
   rules?: Omit<
     RegisterOptions<FormFields>,
     "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
   >;
-  disabled?: boolean;
-  type?: string;
-  helperText?: React.ReactNode;
-  onChange?: (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
   sx?: SxProps;
 }) {
   const { formState } = useFormContext();
@@ -54,7 +52,6 @@ export function FormFieldInput<FormFields extends FieldValues>({
         <TextField
           sx={sx}
           disabled={formState.isSubmitting || disabled}
-          className={className}
           name={field.name}
           onChange={(e) => {
             field.onChange(e);
