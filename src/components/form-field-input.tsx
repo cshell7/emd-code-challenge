@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { type SxProps, TextField } from "@mui/material";
 import { get } from "lodash";
 import { Controller, useFormContext } from "react-hook-form";
 
@@ -13,6 +13,7 @@ import type {
 export function FormFieldInput<FormFields extends FieldValues>({
   name,
   label,
+  placeholder = "",
   control,
   defaultValue,
   className,
@@ -21,9 +22,11 @@ export function FormFieldInput<FormFields extends FieldValues>({
   type = "text",
   helperText,
   onChange,
+  sx,
 }: {
   name: FieldPath<FormFields>;
-  label: string;
+  label?: string;
+  placeholder?: string;
   control: Control<FormFields>;
   defaultValue: FieldPathValue<FormFields, FieldPath<FormFields>>;
   className?: string;
@@ -37,6 +40,7 @@ export function FormFieldInput<FormFields extends FieldValues>({
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
+  sx?: SxProps;
 }) {
   const { formState } = useFormContext();
 
@@ -48,6 +52,7 @@ export function FormFieldInput<FormFields extends FieldValues>({
       rules={rules}
       render={({ field }) => (
         <TextField
+          sx={sx}
           disabled={formState.isSubmitting || disabled}
           className={className}
           name={field.name}
@@ -61,7 +66,7 @@ export function FormFieldInput<FormFields extends FieldValues>({
           label={label}
           type={type}
           variant="outlined"
-          placeholder=""
+          placeholder={placeholder}
           helperText={
             get(formState.errors, field.name)
               ? (get(formState.errors, field.name)?.message as string)
