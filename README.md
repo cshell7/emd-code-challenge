@@ -1,28 +1,21 @@
-# Create T3 App
+# EMD Code Challenge
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Hello, welcome to my code. Main things to check out:
 
-## What's next? How do I make an app with this?
+1. src/utils/is-valid-luhn.ts: The magic that checks if a number is valid
+1. src/utils/is-valid-luhn.test.ts: Some lovely tests for my luhn function
+1. src/server/api/routers/credit-card.ts: Endpoints for checking CC numbers
+1. src/pages/index.tsx: Where it all comes together
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+Check it out here: https://emd-code-challenge-git-main-cshell7.vercel.app/
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## My Process:
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- (20 min) Got the app framework set up and deployed to Vercel.
+- (20 min) Learned about Luhn checksum algorithm, set up checker function and endpoints.
+- (35 min) Set up jest and created test cases to validate my function.
+- (45 min) Set up multi input form with some basic input validation.
+- (80 min) Made less ugly and various small clean ups on the code.
+- (10 min) Added these notes.
 
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+Total: 210 minutes
